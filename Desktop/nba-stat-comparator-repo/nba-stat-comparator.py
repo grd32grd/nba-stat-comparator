@@ -1,4 +1,5 @@
 #Imports
+from nba_api.stats.library.parameters import NumberOfGames
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -15,6 +16,21 @@ pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
+def players_stat_detail(name,id,type):
+    player_dict = [player for player in players.get_players() if player['full_name'] == name][0]
+
+    #Dataframe that illustrates player's career stats.
+    career = playercareerstats.PlayerCareerStats(player_id=player_dict['id'])
+    career_dataframe = career.get_data_frames()[0]
+
+    team_id = career_dataframe[career_dataframe['SEASON_ID'] == id]['TEAM_ID']
+
+    shotchartlist = shotchartdetail.ShotChartDetail(team_id = int(team_id), player_id = int(player_dict['id']), season_type_all_star = type, season_nullable = id, context_measure_simple = "FGA").get_data_frames()
+
+    print(career_dataframe)
+
+
+
 def draw(graphic, n1, i1, t1, n2, i2, t2):
     if graphic is None:
         graphic = plt.figure()
@@ -27,6 +43,8 @@ def draw(graphic, n1, i1, t1, n2, i2, t2):
     ax.text(1, 0.95, n2, transform=ax.transAxes, horizontalalignment='right', color='black', fontsize=12)
     ax.text(1, 0.90, i2, transform=ax.transAxes, horizontalalignment='right', color='black', fontsize=9)
     ax.text(1, 0.85, t2, transform=ax.transAxes, horizontalalignment='right', color='black', fontsize=9)
+    
+    ax.text(1, 0.85, t2, transform=ax.transAxes, horizontalalignment='right', color='black', fontsize=9)
 
     return graphic
 
@@ -34,6 +52,8 @@ if __name__ == "__main__":
 
     #Generates title.
     title = 'Test'
+
+    players_stat_detail('Kevin Durant',2020-21,'Regular Season')
 
     #Asks user for the two players' general info.
     player_name1 = input ("Enter player 1's full name: ")
@@ -53,7 +73,7 @@ if __name__ == "__main__":
         season_type2 = 'Playoffs'    
     
     #Default, for testing.  
-    draw(None, 'Kevin Durant',2020-21,'Playoffs','James Harden',2020-21,'Playoffs')
+    draw(None, 'Kevin Durant','2020-21','Playoffs','James Harden','2020-21','Playoffs')
     #draw(None, player_name1, season_id1, season_type1, player_name2, season_id2, season_type2)
     plt.show()
    
