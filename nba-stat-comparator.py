@@ -19,6 +19,8 @@ pd.set_option('display.max_rows',500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
+
+#Function that'll obtain the necessary data to graph the data.
 def career_ppg_data(name,year,type):
     player_dict = [player for player in players.get_players() if player['full_name'] == name][0]
 
@@ -43,6 +45,7 @@ def career_ppg_data(name,year,type):
 
     return years, yearly_ppg     
 
+#Function that'll interpret the data and visualize it as a line graph. 
 def graph(graphic, n1, i1, t1, n2, i2, t2):
     if graphic is None:
         graphic = plt.figure()
