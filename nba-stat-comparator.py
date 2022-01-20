@@ -60,37 +60,39 @@ def graph(graphic, n1, i1, t1, n2, i2, t2):
 
 if __name__ == "__main__":
 
-    name1 = ""
-    name2 = ""
+    # name1 = ""
+    # name2 = ""
 
-    def calculate():
-        name1 = e1.get()
-        name2 = e2.get()
-        e1.delete(0, tk.END)
-        e2.delete(0, tk.END)
-        return name1, name2
+    # def calculate():
+    #     name1 = e1.get()
+    #     name2 = e2.get()
+    #     e1.delete(0, tk.END)
+    #     e2.delete(0, tk.END)
+    #     return name1, name2
 
-    master = tk.Tk()
-    tk.Label(master, text="Player 1 Full Name:").grid(row=0)
-    tk.Label(master, text="Player 2 Full Name:").grid(row=1)
+    # master = tk.Tk()
+    # tk.Label(master, text="Player 1 Full Name:").grid(row=0)
+    # tk.Label(master, text="Player 2 Full Name:").grid(row=1)
 
-    e1 = tk.Entry(master)
-    e2 = tk.Entry(master)
-    e1.insert(10, "")
-    e2.insert(10, "")
+    # e1 = tk.Entry(master)
+    # e2 = tk.Entry(master)
+    # e1.insert(10, "")
+    # e2.insert(10, "")
 
-    e1.grid(row=0, column=1)
-    e2.grid(row=1, column=1)
+    # e1.grid(row=0, column=1)
+    # e2.grid(row=1, column=1)
 
-    tk.Button(master, text='Calculate Stats', command=calculate).grid(row=3, column=0, sticky=tk.W, pady=4)
+    # tk.Button(master, text='Calculate Stats', command=calculate).grid(row=3, column=0, sticky=tk.W, pady=4)
   
 
-    master.mainloop()
+    # master.mainloop()
 
-    title = 'Test'
+    # title = 'Test'
 
-    name1 = calculate()[0]
-    name2 = calculate()[1]
-    graph(None, name1, '2020-21', 'Regular Season', name2, '2020-21', 'Regular Season')
+    # name1 = calculate()[0]
+    # name2 = calculate()[1]
+
+    # Swap names depending on who's played longer
+    graph(None, 'James Harden', '2020-21', 'Regular Season', 'Stephen Curry', '2020-21', 'Regular Season')
     plt.show()
    
