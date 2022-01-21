@@ -14,11 +14,10 @@ from tkinter import *
 from nba_api.stats.static import players
 from nba_api.stats.endpoints import playercareerstats
 
-#Makes sure that the entire dataframe is displayed.
+#Ensures that the entire dataframe is displayed.
 pd.set_option('display.max_rows',500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
-
 
 #Function that'll obtain the necessary data to graph the data.
 def career_ppg_data(name,year,type):
@@ -59,9 +58,20 @@ def graph(graphic, n1, i1, t1, n2, i2, t2):
     plt.xticks(rotation=45)
     plt.ylabel('Season PPG', fontsize=14)
     plt.grid(True)
+
     return graphic
 
+
+# Main Program
 if __name__ == "__main__":
+
+    print('You will be inputting the names of two players to compare:')
+    print('Enter player name #1:')
+    player1 = input()
+    print('Enter player name #2:')
+    player2 = input()
+    graph(None, player1, '2020-21', 'Regular Season', player2, '2020-21', 'Regular Season')
+    plt.show()
 
     # name1 = ""
     # name2 = ""
@@ -87,15 +97,10 @@ if __name__ == "__main__":
 
     # tk.Button(master, text='Calculate Stats', command=calculate).grid(row=3, column=0, sticky=tk.W, pady=4)
   
-
     # master.mainloop()
 
     # title = 'Test'
 
     # name1 = calculate()[0]
     # name2 = calculate()[1]
-
-    # Swap names depending on who's played longer
-    graph(None, 'James Harden', '2020-21', 'Regular Season', 'Stephen Curry', '2020-21', 'Regular Season')
-    plt.show()
    
